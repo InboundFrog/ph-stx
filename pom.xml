@@ -17,9 +17,7 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.sciencedirect.sdtech.parents</groupId>
@@ -30,7 +28,7 @@
   <!-- Alias the group for now, until a proper artifact is available in Maven central -->
   <groupId>com.sciencedirect.sdtech.com.helger</groupId>
   <artifactId>ph-stx-parent-pom</artifactId>
-  <version>0.9.2-SNAPSHOT</version>
+  <version>0.9.2</version>
   <packaging>pom</packaging>
   <name>ph-stx-parent-pom</name>
   <description>Base POM to build the ph-stx projects</description>
@@ -56,7 +54,7 @@
     <connection>scm:git:git@github.com:SDFE/ph-stx.git</connection>
     <developerConnection>scm:git:git@github.com:SDFE/ph-stx.git</developerConnection>
     <url>http://github.com/phax/ph-stx</url>
-    <tag>HEAD</tag>
+    <tag>ph-stx-parent-pom-0.9.2</tag>
   </scm>
 
   <organization>
