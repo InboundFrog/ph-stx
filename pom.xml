@@ -17,13 +17,18 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.helger</groupId>
     <artifactId>parent-pom</artifactId>
     <version>1.9.2</version>
   </parent>
+
+  <!-- Alias the group for now, until a proper artifact is available in Maven central -->
+  <groupId>com.sciencedirect.sdtech.com.helger</groupId>
   <artifactId>ph-stx-parent-pom</artifactId>
   <version>0.9.2-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -39,10 +44,17 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
+  <!-- Original SCM -->
+  <!--<scm>-->
+    <!--<connection>scm:git:git@github.com:phax/ph-stx.git</connection>-->
+    <!--<developerConnection>scm:git:git@github.com:phax/ph-stx.git</developerConnection>-->
+    <!--<url>http://github.com/phax/ph-stx</url>-->
+    <!--<tag>HEAD</tag>-->
+  <!--</scm>-->
   <scm>
-    <connection>scm:git:git@github.com:phax/ph-stx.git</connection>
-    <developerConnection>scm:git:git@github.com:phax/ph-stx.git</developerConnection>
+    <connection>scm:git:git@github.com:SDFE/ph-stx.git</connection>
+    <developerConnection>scm:git:git@github.com:SDFE/ph-stx.git</developerConnection>
     <url>http://github.com/phax/ph-stx</url>
     <tag>HEAD</tag>
   </scm>
@@ -60,13 +72,23 @@
       <url>http://www.helger.com</url>
     </developer>
   </developers>
+
+  <properties>
+    <!-- PH Deps -->
+    <ph.commons.version>8.6.2</ph.commons.version>
+
+
+    <!-- Maven Plugins -->
+    <maven.plugin.compiler.version>3.6.1</maven.plugin.compiler.version>
+    <java.version>1.8</java.version>
+  </properties>
   
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>8.6.2</version>
+        <version>${ph.commons.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -106,8 +128,9 @@
     <module>ph-stx-parser</module>
     <module>ph-stx-engine</module>
   </modules>
-  
+
   <build>
+
     <plugins>
       <plugin>
         <groupId>com.mycila</groupId>
@@ -121,5 +144,20 @@
         </configuration>
       </plugin>
     </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.plugin.compiler.version}</version>
+
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
