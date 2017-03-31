@@ -22,9 +22,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.helger</groupId>
-    <artifactId>parent-pom</artifactId>
-    <version>1.9.2</version>
+    <groupId>com.sciencedirect.sdtech.parents</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.4</version>
   </parent>
 
   <!-- Alias the group for now, until a proper artifact is available in Maven central -->
