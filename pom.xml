@@ -28,7 +28,7 @@
   <!-- Alias the group for now, until a proper artifact is available in Maven central -->
   <groupId>com.sciencedirect.sdtech.com.helger</groupId>
   <artifactId>ph-stx-parent-pom</artifactId>
-  <version>0.9.4</version>
+  <version>0.9.5-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>ph-stx-parent-pom</name>
   <description>Base POM to build the ph-stx projects</description>
@@ -54,7 +54,7 @@
     <connection>scm:git:git@github.com:SDFE/ph-stx.git</connection>
     <developerConnection>scm:git:git@github.com:SDFE/ph-stx.git</developerConnection>
     <url>http://github.com/phax/ph-stx</url>
-    <tag>ph-stx-parent-pom-0.9.4</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <organization>
