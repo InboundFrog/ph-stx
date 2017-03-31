@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.sciencedirect.sdtech.parents</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
   </parent>
 
   <!-- Alias the group for now, until a proper artifact is available in Maven central -->
