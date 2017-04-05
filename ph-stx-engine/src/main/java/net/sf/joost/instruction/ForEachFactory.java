@@ -164,7 +164,7 @@ public final class ForEachFactory extends AbstractFactoryBase
         selectResult = m_aSelect.evaluate (context, this);
       }
 
-      if (selectResult == null || selectResult.type == Value.EMPTY)
+      if (selectResult == null || selectResult.type() == Value.EMPTY)
       {
         // for-each-item finished (empty sequence left)
         next = successor;
@@ -172,8 +172,8 @@ public final class ForEachFactory extends AbstractFactoryBase
       }
 
       super.process (context); // enter new scope for local variables
-      m_aResultStack.push (selectResult.next);
-      selectResult.next = null;
+      m_aResultStack.push (selectResult.next());
+      selectResult.next(null);
 
       context.localVars.put (m_sExpName, selectResult);
       declareVariable (m_sExpName);

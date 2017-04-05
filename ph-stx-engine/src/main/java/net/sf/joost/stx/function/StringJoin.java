@@ -68,12 +68,12 @@ public final class StringJoin implements IInstance
   {
     Value seq = args.m_aLeft.evaluate (context, top);
     final String sep = args.m_aRight.evaluate (context, top).getStringValue ();
-    if (seq.type == Value.EMPTY)
+    if (seq.type() == Value.EMPTY)
       return Value.VAL_EMPTY_STRING;
     final StringBuffer buf = new StringBuffer ();
     while (seq != null)
     {
-      final Value next = seq.next;
+      final Value next = seq.next();
       buf.append (seq.getStringValue ());
       if (next != null)
         buf.append (sep);

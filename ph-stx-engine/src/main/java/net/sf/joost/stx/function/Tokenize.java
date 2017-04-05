@@ -116,7 +116,7 @@ public final class Tokenize implements IInstance
         start = last = current;
       else
       {
-        last.next = current;
+        last.next(current);
         last = current;
       }
     } while (prevEnd > 0);

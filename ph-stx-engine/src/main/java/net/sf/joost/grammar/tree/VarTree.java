@@ -105,7 +105,7 @@ public final class VarTree extends AbstractTree
 
     final Value v1 = vars.get (expName);
     // create a copy if the result is a sequence
-    return v1.next == null ? v1 : v1.copy ();
+    return v1.next() == null ? v1 : v1.copy ();
   }
 
   @Override

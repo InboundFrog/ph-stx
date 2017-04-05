@@ -67,6 +67,6 @@ public final class Exists implements IInstance
   public Value evaluate (final Context context, final int top, final AbstractTree args) throws SAXException, EvalException
   {
     final Value v = args.evaluate (context, top);
-    return Value.getBoolean (v.type != Value.EMPTY);
+    return Value.getBoolean (v.type() != Value.EMPTY);
   }
 }

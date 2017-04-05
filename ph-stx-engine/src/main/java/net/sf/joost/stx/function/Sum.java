@@ -66,12 +66,12 @@ public final class Sum implements IInstance
   public Value evaluate (final Context context, final int top, final AbstractTree args) throws SAXException, EvalException
   {
     Value v = args.evaluate (context, top);
-    if (v.type == Value.EMPTY) // empty sequence
+    if (v.type() == Value.EMPTY) // empty sequence
       return Value.VAL_ZERO;
     double sum = 0;
     while (v != null)
     {
-      final Value next = v.next;
+      final Value next = v.next();
       sum += v.getNumberValue ();
       v = next;
     }

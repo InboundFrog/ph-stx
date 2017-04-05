@@ -66,13 +66,13 @@ public final class Count implements IInstance
   public Value evaluate (final Context context, final int top, final AbstractTree args) throws SAXException, EvalException
   {
     Value v = args.evaluate (context, top);
-    if (v.type == Value.EMPTY) // empty sequence
+    if (v.type() == Value.EMPTY) // empty sequence
       return Value.VAL_ZERO;
     int count = 1;
-    while (v.next != null)
+    while (v.next() != null)
     {
       count++;
-      v = v.next;
+      v = v.next();
     }
     return new Value (count);
   }

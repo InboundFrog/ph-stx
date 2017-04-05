@@ -58,9 +58,9 @@ public final class SeqTree extends AbstractTree
       v2 = Value.VAL_EMPTY;
 
     // if we got an empty sequence, return the other value
-    if (v1.type == Value.EMPTY)
+    if (v1.type() == Value.EMPTY)
       return v2;
-    if (v2.type == Value.EMPTY)
+    if (v2.type() == Value.EMPTY)
       return v1;
 
     return Value.concat (v1, v2);

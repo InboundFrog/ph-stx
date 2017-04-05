@@ -80,7 +80,7 @@ public final class Remove implements IInstance
                                "'");
     long position = Math.round (dPos);
 
-    if (seq.type == Value.EMPTY || position < 1)
+    if (seq.type() == Value.EMPTY || position < 1)
       return seq;
 
     Value last = null;
@@ -88,7 +88,7 @@ public final class Remove implements IInstance
     while (seq != null && --position != 0)
     {
       last = seq;
-      seq = seq.next;
+      seq = seq.next();
     }
 
     if (seq == null) // position greater than sequence length
@@ -97,12 +97,12 @@ public final class Remove implements IInstance
     if (last == null)
     {
       // remove the first item
-      if (result.next == null) // the one and only item
+      if (result.next() == null) // the one and only item
         return Value.VAL_EMPTY;
-      return result.next;
+      return result.next();
     }
 
-    last.next = seq.next;
+    last.next(seq.next());
     return result;
   }
 }

@@ -46,14 +46,14 @@ public final class SubTree extends AbstractTree
     if (m_aLeft != null)
     {
       v1 = m_aLeft.evaluate (context, top);
-      if (v1.type == Value.EMPTY)
+      if (v1.type() == Value.EMPTY)
         return v1;
     }
     else
       v1 = null; // negative sign
 
     final Value v2 = m_aRight.evaluate (context, top);
-    if (v2.type == Value.EMPTY)
+    if (v2.type() == Value.EMPTY)
       return v2;
 
     // none of the operands is empty, ok: perform the operation

@@ -58,7 +58,7 @@ public final class PredicateTree extends AbstractTree
         m_aLeft.matches (context, top, true))
     {
       final Value v = m_aRight.evaluate (context, top);
-      if (v.type == Value.NUMBER)
+      if (v.type() == Value.NUMBER)
         retValue = (context.position == Math.round (v.getNumberValue ()));
       else
         retValue = v.getBooleanValue ();

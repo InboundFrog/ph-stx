@@ -67,12 +67,12 @@ public final class ItemAt implements IInstance
     Value seq = args.m_aLeft.evaluate (context, top);
     final double dpos = args.m_aRight.evaluate (context, top).getNumberValue ();
 
-    if (seq.type == Value.EMPTY || Double.isNaN (dpos))
+    if (seq.type() == Value.EMPTY || Double.isNaN (dpos))
       return Value.VAL_EMPTY;
 
     long position = Math.round (dpos);
     while (seq != null && --position != 0)
-      seq = seq.next;
+      seq = seq.next();
 
     if (seq == null)
       throw new EvalException ("Position " +

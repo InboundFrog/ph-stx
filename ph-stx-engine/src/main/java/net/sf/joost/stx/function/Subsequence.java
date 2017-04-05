@@ -77,7 +77,7 @@ public final class Subsequence implements IInstance
       final double arg3 = args.m_aRight.evaluate (context, top).getNumberValue ();
 
       // extra test, because round(NaN) gives 0
-      if (seq.type == Value.EMPTY || Double.isNaN (arg2) || Double.isNaN (arg2 + arg3))
+      if (seq.type() == Value.EMPTY || Double.isNaN (arg2) || Double.isNaN (arg2 + arg3))
         return Value.VAL_EMPTY;
 
       // the first item is at position 1
@@ -93,7 +93,7 @@ public final class Subsequence implements IInstance
       seq = args.m_aLeft.evaluate (context, top);
       final double arg2 = args.m_aRight.evaluate (context, top).getNumberValue ();
 
-      if (seq.type == Value.EMPTY || Double.isNaN (arg2))
+      if (seq.type() == Value.EMPTY || Double.isNaN (arg2))
         return Value.VAL_EMPTY;
       if (arg2 < 1)
         return seq;
@@ -117,12 +117,12 @@ public final class Subsequence implements IInstance
       end--;
       if (end == 0)
         break;
-      seq = seq.next;
+      seq = seq.next();
     }
     if (ret != null)
     {
       if (end == 0) // reached the end of the requested subsequence
-        seq.next = null; // cut the rest
+        seq.next(null); // cut the rest
       return ret;
     }
     return Value.VAL_EMPTY;

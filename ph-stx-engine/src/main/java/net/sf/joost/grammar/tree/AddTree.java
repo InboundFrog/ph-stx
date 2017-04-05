@@ -43,14 +43,14 @@ public final class AddTree extends AbstractTree
   public Value evaluate (final Context context, final int top) throws SAXException
   {
     final Value v2 = m_aRight.evaluate (context, top);
-    if (v2.type == Value.EMPTY)
+    if (v2.type() == Value.EMPTY)
       return v2;
 
     if (m_aLeft == null) // positive sign
       return new Value (v2.getNumberValue ());
 
     final Value v1 = m_aLeft.evaluate (context, top);
-    if (v1.type == Value.EMPTY)
+    if (v1.type() == Value.EMPTY)
       return v1;
     return new Value (v1.getNumberValue () + v2.getNumberValue ());
   }

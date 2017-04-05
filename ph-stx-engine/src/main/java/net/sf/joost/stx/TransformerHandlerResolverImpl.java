@@ -199,7 +199,7 @@ public final class TransformerHandlerResolverImpl
       // remove preceding "{}" if present
       final String name = key.startsWith ("{}") ? key.substring (2) : key;
       final Value val = params.get (key);
-      result.put (name, val.type == Value.OBJECT ? val.getObject () : val.getStringValue ());
+      result.put (name, val.type() == Value.OBJECT ? val.getObject () : val.getStringValue ());
     }
     return result;
   }

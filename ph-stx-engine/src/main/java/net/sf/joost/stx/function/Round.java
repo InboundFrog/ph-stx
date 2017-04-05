@@ -66,7 +66,7 @@ public final class Round implements IInstance
   public Value evaluate (final Context context, final int top, final AbstractTree args) throws SAXException, EvalException
   {
     final Value v = args.evaluate (context, top);
-    if (v.type == Value.EMPTY)
+    if (v.type() == Value.EMPTY)
       return v;
     final double n = v.getNumberValue ();
     // test for special cases

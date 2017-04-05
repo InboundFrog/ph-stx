@@ -100,7 +100,7 @@ public final class ValueOfFactory extends AbstractFactoryBase
     {
       Value v = m_aSelect.evaluate (context, this);
       String s;
-      if (v.next == null)
+      if (v.next() == null)
         s = v.getStringValue ();
       else
       {
@@ -110,15 +110,15 @@ public final class ValueOfFactory extends AbstractFactoryBase
         // value
         // use a string buffer for creating the result
         final StringBuilder sb = new StringBuilder ();
-        Value nextVal = v.next;
-        v.next = null;
+        Value nextVal = v.next();
+        v.next(null);
         sb.append (v.getStringValue ());
         while (nextVal != null)
         {
           sb.append (sep);
           v = nextVal;
-          nextVal = v.next;
-          v.next = null;
+          nextVal = v.next();
+          v.next(null);
           sb.append (v.getStringValue ());
         }
         s = sb.toString ();

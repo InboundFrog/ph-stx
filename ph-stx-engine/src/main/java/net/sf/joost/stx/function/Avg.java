@@ -63,13 +63,13 @@ public final class Avg implements IInstance
   public Value evaluate (final Context context, final int top, final AbstractTree args) throws SAXException, EvalException
   {
     Value v = args.evaluate (context, top);
-    if (v.type == Value.EMPTY) // empty sequence
+    if (v.type() == Value.EMPTY) // empty sequence
       return v;
     double avg = 0;
     int count = 0;
     while (v != null)
     {
-      final Value next = v.next;
+      final Value next = v.next();
       avg += v.getNumberValue ();
       count++;
       v = next;

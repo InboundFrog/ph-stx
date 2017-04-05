@@ -68,7 +68,7 @@ public final class ExtSequence implements IInstance
   {
     Value v = args.evaluate (context, top);
     // in case there's no object
-    if (v.type != Value.OBJECT)
+    if (v.type() != Value.OBJECT)
       return v;
 
     Object [] objs = null;
@@ -91,8 +91,8 @@ public final class ExtSequence implements IInstance
       Value last = v;
       for (int i = 1; i < objs.length; i++)
       {
-        last.next = new Value (objs[i]);
-        last = last.next;
+        last.next(new Value (objs[i]));
+        last = last.next();
       }
     }
 

@@ -69,7 +69,7 @@ public final class NamespaceURI implements IInstance
                                                                                         EvalException
   {
     final Value v = FunctionFactory.getOptionalValue (context, top, args);
-    if (v.type == Value.EMPTY)
+    if (v.type() == Value.EMPTY)
       return Value.VAL_EMPTY_STRING;
 
     final SAXEvent event = v.getNode ();
