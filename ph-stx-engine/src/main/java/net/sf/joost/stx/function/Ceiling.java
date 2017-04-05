@@ -66,7 +66,7 @@ public final class Ceiling implements IInstance
   public Value evaluate (final Context context, final int top, final AbstractTree args) throws SAXException, EvalException
   {
     final Value v = args.evaluate (context, top);
-    if (v.type == Value.EMPTY)
+    if (v.type() == Value.EMPTY)
       return v;
     return new Value (Math.ceil (v.getNumberValue ()));
   }

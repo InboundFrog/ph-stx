@@ -141,7 +141,7 @@ public class PDocumentFactory extends AbstractFactoryBase
     public short processEnd (final Context context) throws SAXException
     {
       Value v = m_aHref.evaluate (context, this);
-      if (v.type == Value.EMPTY)
+      if (v.type() == Value.EMPTY)
         return CSTX.PR_CONTINUE; // nothing to do
 
       final Processor proc = context.currentProcessor;
@@ -161,7 +161,7 @@ public class PDocumentFactory extends AbstractFactoryBase
       if (m_aBaseUri == null)
       {
         // determine default base URI
-        if (v.type == Value.NODE)
+        if (v.type() == Value.NODE)
         {
           // use #input
           base = context.locator.getSystemId ();
@@ -195,8 +195,8 @@ public class PDocumentFactory extends AbstractFactoryBase
           XMLReader reader;
           InputSource iSource;
           Source source;
-          nextVal = v.next;
-          v.next = null;
+          nextVal = v.next();
+          v.next(null);
           final String hrefURI = v.getStringValue ();
           // ask URI resolver if present
           if (context.m_aURIResolver != null && (source = context.m_aURIResolver.resolve (hrefURI, base)) != null)

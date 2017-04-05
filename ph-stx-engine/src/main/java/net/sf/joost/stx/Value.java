@@ -63,7 +63,7 @@ public final class Value implements Cloneable
   public static final int OBJECT = 5;
 
   /** type of this value */
-  public int type;
+  private int type;
 
   /** for <code>{@link #type} == {@link #NODE}</code> */
   private SAXEvent event;
@@ -86,7 +86,7 @@ public final class Value implements Cloneable
    * {@link #NODE} and {@link #event} set to <code>null</code>
    * (<code>next</code> must be <code>null</code> in this case, too).
    */
-  public Value next;
+  private Value next;
 
   //
   // Constructors
@@ -178,6 +178,37 @@ public final class Value implements Cloneable
   //
   // Methods
   //
+
+  // Attempt to provide some protection around the type values that should be immutable.
+
+  public int type() {
+    return type;
+  }
+
+  public Value next() {
+    return next;
+  }
+
+  public void next(final Value next) {
+    if(type == EMPTY || isImmutableValue()) {
+      throw new UnsupportedOperationException("Cannot modify the immutable constant types");
+    }
+    this.next = next;
+  }
+
+  public boolean isMutableValue() {
+    return !isImmutableValue();
+  }
+
+  private boolean isImmutableValue() {
+    return VAL_TRUE.equals(this) ||
+            VAL_FALSE.equals(this) ||
+            VAL_EMPTY.equals(this) ||
+            VAL_EMPTY_STRING.equals(this) ||
+            VAL_ZERO.equals(this) ||
+            VAL_NAN.equals(this);
+  }
+
 
   // Getter
 

@@ -69,7 +69,7 @@ public final class DescTree extends AbstractReversableTree
     while (top < context.ancestorStack.size ())
     {
       final Value v1 = m_aRight.evaluate (context, top++);
-      if (v1.type == Value.NODE)
+      if (v1.type() == Value.NODE)
       {
         if (ret != null)
         {
@@ -78,22 +78,22 @@ public final class DescTree extends AbstractReversableTree
           while (vi != null)
           {
             Value vj;
-            for (vj = ret; vj != null; vj = vj.next)
+            for (vj = ret; vj != null; vj = vj.next())
               if (vi.getNode () == vj.getNode ())
                 break;
             if (vj == null)
             { // vi not found in ret
-              last.next = vi;
+              last.next(vi);
               last = vi;
             }
-            vi = vi.next;
-            last.next = null; // because last=vi above
+            vi = vi.next();
+            last.next(null); // because last=vi above
           }
         }
         else
         {
           ret = v1;
-          for (last = v1; last.next != null; last = last.next)
+          for (last = v1; last.next() != null; last = last.next())
           {}
         }
       }

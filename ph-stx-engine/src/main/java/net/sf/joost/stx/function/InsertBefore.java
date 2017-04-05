@@ -80,9 +80,9 @@ public final class InsertBefore implements IInstance
                                "'");
     long position = Math.round (dPos);
 
-    if (inserts.type == Value.EMPTY)
+    if (inserts.type() == Value.EMPTY)
       return target;
-    if (target.type == Value.EMPTY)
+    if (target.type() == Value.EMPTY)
       return inserts;
 
     Value result;
@@ -93,16 +93,16 @@ public final class InsertBefore implements IInstance
     {
       result = target;
       // determine position
-      while (target.next != null && --position > 1)
-        target = target.next;
-      final Value rest = target.next;
-      target.next = inserts;
+      while (target.next() != null && --position > 1)
+        target = target.next();
+      final Value rest = target.next();
+      target.next(inserts);
       target = rest;
     }
     // append rest of target
-    while (inserts.next != null)
-      inserts = inserts.next;
-    inserts.next = target;
+    while (inserts.next() != null)
+      inserts = inserts.next();
+    inserts.next(target);
 
     return result;
   }

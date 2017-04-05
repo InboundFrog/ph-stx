@@ -64,12 +64,12 @@ public final class Min implements IInstance
                                                                                         EvalException
   {
     Value v = args.evaluate (context, top);
-    if (v.type == Value.EMPTY) // empty sequence
+    if (v.type() == Value.EMPTY) // empty sequence
       return v;
     double min = Double.POSITIVE_INFINITY;
     while (v != null)
     {
-      final Value next = v.next;
+      final Value next = v.next();
       final double n = v.getNumberValue ();
       if (Double.isNaN (n))
         return Value.VAL_NAN;

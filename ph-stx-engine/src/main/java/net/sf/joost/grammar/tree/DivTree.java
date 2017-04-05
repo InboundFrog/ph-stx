@@ -43,11 +43,11 @@ public final class DivTree extends AbstractTree
   public Value evaluate (final Context context, final int top) throws SAXException
   {
     final Value v1 = m_aLeft.evaluate (context, top);
-    if (v1.type == Value.EMPTY)
+    if (v1.type() == Value.EMPTY)
       return v1;
 
     final Value v2 = m_aRight.evaluate (context, top);
-    if (v2.type == Value.EMPTY)
+    if (v2.type() == Value.EMPTY)
       return v2;
 
     // none of the operands is empty, ok: perform the operation

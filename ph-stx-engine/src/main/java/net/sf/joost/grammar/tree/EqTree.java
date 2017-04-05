@@ -44,21 +44,21 @@ public final class EqTree extends AbstractTree
   {
     final Value v1 = m_aLeft.evaluate (context, top);
     final Value v2 = m_aRight.evaluate (context, top);
-    if (v1.type == Value.EMPTY || v2.type == Value.EMPTY)
+    if (v1.type() == Value.EMPTY || v2.type() == Value.EMPTY)
       return Value.VAL_FALSE;
 
     // sequences: find a pair such that the comparison is true
-    for (Value vi = v1; vi != null; vi = vi.next)
+    for (Value vi = v1; vi != null; vi = vi.next())
     {
-      for (Value vj = v2; vj != null; vj = vj.next)
+      for (Value vj = v2; vj != null; vj = vj.next())
       {
-        if (vi.type == Value.BOOLEAN || vj.type == Value.BOOLEAN)
+        if (vi.type() == Value.BOOLEAN || vj.type() == Value.BOOLEAN)
         {
           if (vi.getBooleanValue () == vj.getBooleanValue ())
             return Value.VAL_TRUE;
         }
         else
-          if (vi.type == Value.NUMBER || vj.type == Value.NUMBER)
+          if (vi.type() == Value.NUMBER || vj.type() == Value.NUMBER)
           {
             if (vi.getNumberValue () == vj.getNumberValue ())
               return Value.VAL_TRUE;

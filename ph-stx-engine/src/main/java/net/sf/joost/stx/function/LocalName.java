@@ -67,7 +67,7 @@ public final class LocalName implements IInstance
   public Value evaluate (final Context context, final int top, final AbstractTree args) throws SAXException, EvalException
   {
     final Value v = FunctionFactory.getOptionalValue (context, top, args);
-    if (v.type == Value.EMPTY)
+    if (v.type() == Value.EMPTY)
       return Value.VAL_EMPTY_STRING;
 
     final SAXEvent event = v.getNode ();

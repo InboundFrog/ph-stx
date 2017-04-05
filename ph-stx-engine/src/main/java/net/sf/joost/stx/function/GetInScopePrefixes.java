@@ -84,7 +84,7 @@ public final class GetInScopePrefixes implements IInstance
     {
       v = new Value (en);
       if (last != null)
-        last.next = v;
+        last.next(v);
       else
         ret = v;
       last = v;

@@ -92,14 +92,14 @@ public final class AttrTree extends AbstractTree
     if (m_aLeft != null)
     { // preceding path
       Value v1 = m_aLeft.evaluate (context, top);
-      if (v1.type == Value.EMPTY)
+      if (v1.type() == Value.EMPTY)
         return Value.VAL_EMPTY;
 
       // iterate through this node sequence
       Value ret = null, last = null; // for constructing the result seq
       while (v1 != null)
       {
-        if (v1.type != Value.NODE)
+        if (v1.type() != Value.NODE)
         {
           context.m_aErrorHandler.error ("Current item for evaluating '@" +
                                       m_aValue +
@@ -123,12 +123,12 @@ public final class AttrTree extends AbstractTree
                                                              a.getQName (index),
                                                              a.getValue (index)));
           if (last != null)
-            last.next = v2;
+            last.next(v2);
           else
             ret = v2;
           last = v2;
         }
-        v1 = v1.next; // next node
+        v1 = v1.next(); // next node
       } // while (v1 != null)
 
       if (ret == null)

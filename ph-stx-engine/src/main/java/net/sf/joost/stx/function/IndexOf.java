@@ -72,11 +72,17 @@ public final class IndexOf implements IInstance
     Value seq = args.m_aLeft.evaluate (context, top);
     final Value item = args.m_aRight.evaluate (context, top);
 
-    if (seq.type == Value.EMPTY)
+    if (seq.type() == Value.EMPTY)
       return seq;
 
     final AbstractTree tSeq = new ValueTree (seq);
-    item.next = null;
+
+    // TODO Guard around the supposed "Immutable" types in Value, but allow current behaviour for others ...
+    // This seems like thoroughly dangerous behaviour though. We're modifying a caller value in a function
+    // that does not indicate modification of this parameter.
+    if(item.isMutableValue()) {
+      item.next(null);
+    }
     final AbstractTree tItem = new ValueTree (item);
     // use the implemented = semantics
     final AbstractTree equals = new EqTree (tSeq, tItem);
@@ -86,14 +92,16 @@ public final class IndexOf implements IInstance
 
     while (seq != null)
     {
-      next = seq.next;
-      seq.next = null; // compare items, not sequences
+      next = seq.next();
+      seq.next(null); // compare items, not sequences
       if (equals.evaluate (context, top).getBooleanValue ())
       {
         if (last == null)
           last = result = new Value (index);
-        else
-          last = last.next = new Value (index);
+        else {
+          last.next(new Value(index));
+          last = last.next();
+        }
       }
       tSeq.m_aValue = seq = next;
       index++;
