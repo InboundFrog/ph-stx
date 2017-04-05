@@ -77,12 +77,11 @@ public final class IndexOf implements IInstance
 
     final AbstractTree tSeq = new ValueTree (seq);
 
-    // TODO Guard around the supposed "Immutable" types in Value, but allow current behaviour for others ...
-    // This seems like thoroughly dangerous behaviour though. We're modifying a caller value in a function
-    // that does not indicate modification of this parameter.
-    if(item.isMutableValue()) {
-      item.next(null);
+    // We shouldn't be mutating sequence values, so break out now
+    if(item.next() != null) {
+      throw new IllegalArgumentException("item parameter should not be a sequence");
     }
+
     final AbstractTree tItem = new ValueTree (item);
     // use the implemented = semantics
     final AbstractTree equals = new EqTree (tSeq, tItem);
