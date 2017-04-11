@@ -63,7 +63,7 @@ public final class SAXEvent
   public boolean m_bHasChildNodes = false;
 
   /** contains the position counters */
-  private Map <Object, Counter> m_aPosHash;
+  private Map <Object, Counter> m_aPosHash = new HashMap<>();
 
   private SAXEvent ()
   {}
@@ -196,14 +196,7 @@ public final class SAXEvent
    */
   public void enableChildNodes (final boolean bHasChildNodes)
   {
-    if (bHasChildNodes)
-    {
-      m_aPosHash = new HashMap<> ();
-      this.m_bHasChildNodes = true;
-    }
-    else
-      if (m_aPosHash == null)
-        m_aPosHash = new HashMap<> ();
+    this.m_bHasChildNodes = bHasChildNodes;
   }
 
   // *******************************************************************
