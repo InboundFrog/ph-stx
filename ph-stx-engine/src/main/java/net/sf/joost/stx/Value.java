@@ -20,9 +20,7 @@
 package net.sf.joost.stx;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import net.sf.joost.grammar.EvalException;
 
@@ -169,10 +167,29 @@ public final class Value implements Cloneable
               number = ((Number) obj).doubleValue ();
             }
             else
-            {
-              type = OBJECT;
-              object = obj;
-            }
+              if (obj instanceof Collection && !((Collection) obj).isEmpty()) {
+                Collection collection = ((Collection) obj);
+                Iterator collectionIterator = collection.iterator();
+                type = STRING;
+                string = collectionIterator.next().toString();
+
+                chainValues(collectionIterator, this);
+              }
+              else
+              {
+                type = OBJECT;
+                object = obj;
+              }
+  }
+
+  private void chainValues(Iterator remainingValues, Value lastValue) {
+    if(!remainingValues.hasNext()) {
+      return;
+    }
+
+    Value nextValue = new Value(remainingValues.next().toString());
+    lastValue.next = nextValue;
+    chainValues(remainingValues, nextValue);
   }
 
   //
