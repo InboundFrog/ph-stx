@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.sciencedirect.sdtech.parents</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
   </parent>
 
   <!-- Alias the group for now, until a proper artifact is available in Maven central -->
@@ -34,7 +34,7 @@
   <description>Base POM to build the ph-stx projects</description>
   <url>https://github.com/phax/ph-stx</url>
   <inceptionYear>2016</inceptionYear>
- 
+
   <licenses>
     <license>
       <name>Apache 2</name>
@@ -80,7 +80,7 @@
     <maven.plugin.compiler.version>3.6.1</maven.plugin.compiler.version>
     <java.version>1.8</java.version>
   </properties>
-  
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -121,7 +121,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
+
   <modules>
     <module>ph-stx-parser</module>
     <module>ph-stx-engine</module>
